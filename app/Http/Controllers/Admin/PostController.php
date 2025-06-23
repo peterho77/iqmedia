@@ -38,15 +38,15 @@ class PostController extends Controller
             'status' => 'required|in:published,draft',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        
+
         $data = $request->only('title', 'content', 'category', 'status');
-        
+
         // Xử lý upload hình ảnh
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('posts', 'public');
             $data['image'] = $imagePath;
         }
-        
+
         Post::create($data);
         return redirect()->route('posts.index')->with('success', 'Đã thêm bài viết!');
     }
@@ -56,7 +56,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::findOrFail($id); //tim bai viet theo id 
+        $post = Post::findOrFail($id); //tim bai viet theo id
         return view('admin.posts.show', compact('post'));
     }
 
@@ -81,12 +81,12 @@ class PostController extends Controller
             'status' => 'required|in:published,draft',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        
+
         $post = Post::findOrFail($id);
-        
+
         //cap nhat du lieu moi
         $data = $request->only('title', 'content', 'category', 'status');
-        
+
         // xu ly upload hinh anh
         if ($request->hasFile('image')) {
             // Xoá ảnh cũ nếu có
@@ -97,7 +97,7 @@ class PostController extends Controller
             $imagePath = $request->file('image')->store('posts', 'public');
             $data['image'] = $imagePath;
         }
-        
+
         $post->update($data);
         return redirect()->route('posts.index')->with('success', 'Đã cập nhật bài viết!');
     }
@@ -108,12 +108,12 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
-        
+
         // Xoá ảnh nếu có
         if ($post->image) {
             Storage::disk('public')->delete($post->image);
         }
-        
+
         $post->delete();
         return redirect()->route('posts.index')->with('success', 'Đã xóa bài viết!');
     }

@@ -1,18 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 @section('content')
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Danh sách bài viết</h1>
-        <a href="{{ route('posts.create') }}" class="btn btn-success">Thêm bài viết mới</a>
+        <a href="{{ route('admin.create') }}" class="btn btn-success">Thêm bài viết mới</a>
     </div>
-    
+
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
-    
+
     <div class="card">
         <div class="card-body">
             <table class="table table-striped">

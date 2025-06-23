@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\PostController as UserPostController;
+use PHPUnit\Framework\Attributes\PostCondition;
 
 // View home page
 Route::get('/', function () {
@@ -46,3 +47,14 @@ Route::get('/posts/{id}', [UserPostController::class, 'show'])->name('posts.show
 // Hiển thị bài viết theo danh mục cho người dùng
 Route::get('/dich-vu/cho-thue-man-hinh-anh-sang', [UserPostController::class, 'categoryLighting'])
     ->name('posts.category.lighting');
+
+
+//admin mới
+Route::get('/admin', [PostController::class, 'index'])->name('admin.index');
+Route::get('/admin/create', [PostController::class, 'create'])->name('admin.create');
+Route::post('/admin', [PostController::class, 'store'])->name('admin.store');
+Route::get('/admin/{id}/edit', [PostController::class, 'edit'])->name('admin.edit');
+Route::put('/admin/{id}', [PostController::class, 'update'])->name('admin.update');
+Route::delete('/admin/{id}', [PostController::class, 'destroy'])->name('admin.destroy');
+Route::get('/admin/show/{id}', [PostController::class, 'show'])->name('admin.show');
+

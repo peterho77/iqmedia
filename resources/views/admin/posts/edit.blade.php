@@ -1,21 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 @section('content')
 <div class="container">
     <h1>Sửa bài viết</h1>
-    
+
     {{-- Form cập nhật bài viết --}}
-    <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.update', $post->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('PUT')       
+        @method('PUT')
         <div class="mb-3">
             <label for="title" class="form-label">Tiêu đề:</label>
             <input type="text" class="form-control" id="title" name="title" value="{{ $post->title }}" required>
-        </div>  
+        </div>
         <div class="mb-3">
             <label for="content" class="form-label">Nội dung:</label>
             <textarea class="form-control" id="content" name="content" rows="6" required>{{ $post->content }}</textarea>
-        </div>       
+        </div>
         {{-- hien thi danh mục hiện tại --}}
         <div class="mb-3">
             <label for="category" class="form-label">Danh mục:</label>
@@ -35,7 +35,7 @@
                 <option value="published" {{ $post->status == 'published' ? 'selected' : '' }}>Đã xuất bản</option>
                 <option value="draft" {{ $post->status == 'draft' ? 'selected' : '' }}>Bản nháp</option>
             </select>
-        </div>    
+        </div>
         {{-- hien thi ảnh hiện tại và upload ảnh mới --}}
         <div class="mb-3">
             @if($post->image)
@@ -45,7 +45,7 @@
             @endif
             <label for="image" class="form-label">Thay đổi hình ảnh:</label>
             <input type="file" class="form-control" id="image" name="image">
-        </div>       
+        </div>
         <button type="submit" class="btn btn-primary">Cập nhật bài viết</button>
     </form>
 </div>
