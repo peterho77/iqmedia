@@ -37,9 +37,9 @@ Route::get('/admin/dashboard', function () {
 });
 
 // Quản lý bài viết admin (chỉ cần middleware 'auth' nếu muốn bảo vệ)
-Route::middleware(['auth'])->prefix('admin')->group(function () {
-    Route::resource('posts', PostController::class);
-});
+//Route::middleware(['auth'])->prefix('admin')->group(function () {
+//    Route::resource('posts', PostController::class);
+//});
 
 // Hiển thị chi tiết bài viết cho người dùng
 Route::get('/posts/{id}', [UserPostController::class, 'show'])->name('posts.show');
@@ -57,4 +57,3 @@ Route::get('/admin/{id}/edit', [PostController::class, 'edit'])->name('admin.edi
 Route::put('/admin/{id}', [PostController::class, 'update'])->name('admin.update');
 Route::delete('/admin/{id}', [PostController::class, 'destroy'])->name('admin.destroy');
 Route::get('/admin/show/{id}', [PostController::class, 'show'])->name('admin.show');
-

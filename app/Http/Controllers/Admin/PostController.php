@@ -48,7 +48,7 @@ class PostController extends Controller
         }
 
         Post::create($data);
-        return redirect()->route('posts.index')->with('success', 'Đã thêm bài viết!');
+        return redirect()->route('admin.create')->with('success', 'Đã thêm bài viết!');
     }
 
     /**
@@ -99,7 +99,7 @@ class PostController extends Controller
         }
 
         $post->update($data);
-        return redirect()->route('posts.index')->with('success', 'Đã cập nhật bài viết!');
+        return redirect()->route('admin.index')->with('success', 'Đã cập nhật bài viết!');
     }
 
     /**
@@ -115,7 +115,7 @@ class PostController extends Controller
         }
 
         $post->delete();
-        return redirect()->route('posts.index')->with('success', 'Đã xóa bài viết!');
+        return redirect()->route('admin.index')->with('success', 'Đã xóa bài viết!');
     }
 
     public function categoryLighting()
