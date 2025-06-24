@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 @section('content')
 <div class="container">
     <div class="d-flex justify-content-between mb-4">
         <h1>{{ $post->title }}</h1>
         <div>
-            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Sửa</a>
-            <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="d-inline">
+            <a href="{{ route('admin.edit', $post->id) }}" class="btn btn-primary">Sửa</a>
+            <form action="{{ route('admin.destroy', $post->id) }}" method="POST" class="d-inline">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
@@ -21,7 +21,7 @@
         <div class="card-body">
             <p><strong>ID:</strong> {{ $post->id }}</p>
             <p><strong>Danh mục:</strong> {{ $post->category ?: 'Không có' }}</p>
-            <p><strong>Trạng thái:</strong> 
+            <p><strong>Trạng thái:</strong>
                 @if($post->status == 'published')
                     <span class="badge bg-success">Đã xuất bản</span>
                 @else
