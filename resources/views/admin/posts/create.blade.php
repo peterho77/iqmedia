@@ -1,6 +1,13 @@
 @extends('layouts.admin.app')
 
 @section('content')
+
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.css') }}">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+
+
 <div class="container">
     <h1>Thêm bài viết mới</h1>
     <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
@@ -10,9 +17,25 @@
             <input type="text" class="form-control" id="title" name="title" required>
         </div>
 
+        <!-- Main content -->
         <div class="mb-3">
-            <label for="content" class="form-label">Nội dung:</label>
-            <textarea class="form-control" id="content" name="content" rows="6" required></textarea>
+            <label for="title" class="form-label">Nội dung:</label>
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-outline card-info">
+                        <!-- /.card-header -->
+                            <div class="card-body">
+                                <textarea id="summernote" name="content" class="form-control" rows="5" required>
+                                    {{ old('content') }}
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-->
+                </div>
+            </section>
+                <!-- /.content -->
         </div>
 
         <div class="mb-3">
@@ -43,4 +66,36 @@
         <button type="submit" class="btn btn-primary">Lưu bài viết</button>
     </form>
 </div>
+
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+          // Summernote
+          $('#summernote').summernote()
+        })
+
+    //Thêm hình vào phần nội dung
+    function sendFile(file) {
+    var data = new FormData();
+    data.append("file", file);
+    data.append("_token", '{{ csrf_token() }}');
+
+    $.ajax({
+        url: '{{ route("admin.uploadImage") }}', // tạo route này
+        method: 'POST',
+        data: data,
+        contentType: false,
+        processData: false,
+        success: function (url) {
+            $('#summernote').summernote('insertImage', url);
+        },
+        error: function (xhr) {
+            alert('Lỗi upload ảnh!');
+        }
+    });
+    }
+    </script>
+    <!-- Summernote -->
+    <script src="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.js') }}"></script>
+
 @endsection
