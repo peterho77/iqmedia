@@ -51,6 +51,17 @@ class PostController extends Controller
         return redirect()->route('admin.create')->with('success', 'Đã thêm bài viết!');
     }
 
+
+    public function uploadImage(Request $request)
+    {
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $path = $file->store('uploads', 'public'); // lưu vào storage/app/public/uploads
+            return asset('storage/' . $path); // trả về đường dẫn ảnh
+        }
+        return response()->json(['error' => 'Không có ảnh'], 400);
+    }
+
     /**
      * Display the specified resource.
      */

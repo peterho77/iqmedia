@@ -47,6 +47,6 @@
         </div>
     </div>
 
-    <a href="{{ route('posts.index') }}" class="btn btn-secondary">Quay lại danh sách</a>
+    <a href="{{ route('admin.index') }}" class="btn btn-secondary">Quay lại danh sách</a>
 </div>
 @endsection

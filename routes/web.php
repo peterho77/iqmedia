@@ -53,6 +53,7 @@ Route::get('/dich-vu/cho-thue-man-hinh-anh-sang', [UserPostController::class, 'c
 Route::get('/admin', [PostController::class, 'index'])->name('admin.index');
 Route::get('/admin/create', [PostController::class, 'create'])->name('admin.create');
 Route::post('/admin', [PostController::class, 'store'])->name('admin.store');
+Route::post('/admin/upload-image', [PostController::class, 'uploadImage'])->name('admin.uploadImage');//Thêm hình vào phần nội dung
 Route::get('/admin/{id}/edit', [PostController::class, 'edit'])->name('admin.edit');
 Route::put('/admin/{id}', [PostController::class, 'update'])->name('admin.update');
 Route::delete('/admin/{id}', [PostController::class, 'destroy'])->name('admin.destroy');
