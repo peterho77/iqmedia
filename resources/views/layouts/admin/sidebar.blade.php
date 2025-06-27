@@ -7,7 +7,7 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar d-flex flex-column" style="height: 100vh;">
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
@@ -21,7 +21,7 @@
       </div>
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
+      <nav class="mt-2 flex-grow-1">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -48,18 +48,18 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
+      <div class="sidebar-logout p-3" style="margin-top: auto;">
+        <form id="sidebar-logout-form" action="{{ route('logout') }}" method="POST">
+          @csrf
+          <button type="submit" class="btn btn-danger btn-block rounded-pill shadow-sm" style="font-weight:600; font-size:1.1rem;">
+            <i class="fas fa-sign-out-alt mr-2"></i> Đăng xuất
+          </button>
+        </form>
+      </div>
     </div>
     <!-- /.sidebar -->
   </aside>
