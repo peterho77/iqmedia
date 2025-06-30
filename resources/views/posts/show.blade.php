@@ -17,13 +17,13 @@
         <div class="post-meta text-muted mb-4">
             <span>Đăng ngày: {{ $post->created_at->format('d/m/Y') }}</span>
         </div>
-        
+
         @if(isset($post->image) && $post->image)
             <div class="post-image mb-4">
                 <img src="{{ asset('storage/'.$post->image) }}" class="img-fluid" alt="{{ $post->title }}">
             </div>
         @endif
-        
+
         <div class="post-body">
             {!! $post->content !!}
         </div>
