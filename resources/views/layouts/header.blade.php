@@ -43,7 +43,7 @@
                     $user = Auth::user();
                 @endphp
                 <div class="dropdown">
-                    <button class="btn rounded-circle d-inline-flex align-items-center justify-content-center me-2"
+                    <button class="btn rounded-circle d-inline-flex align-items-center justify-content-center"
                             style="width:40px; height:40px; background-color:#FFD600; border:none;"
                             type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person" style="font-size:20px; color:#000;"></i>
@@ -101,19 +101,19 @@
                 <li class="header_menu_item"><a href="/">Trang chủ</a></li>
                 <li class="header_menu_item"><a href="{{ route('pages.about') }}">Giới thiệu</a></li>
                 <li class="header_menu_item submenu">
-                    <a href="/dich-vu">
+                    <a href="">
                         Dịch vụ
                         <i class="header_menu_icon bi bi-chevron-down"></i>
-                    </a>    
+                    </a>
                     <ul class="header_submenu">
                         <li class="header_submenu_item">
-                            <a href="{{ route('posts.category.lighting') }}">Cho thuê màn hinh ánh sáng</a>
+                            <a href="{{ route('posts.category', 'cho-thue-man-hinh-anh-sang') }}">Cho thuê màn hinh ánh sáng</a>
                         </li>
-                        <li class="header_submenu_item"><a href="#">Cho thuê màn hình LED</a></li>
-                        <li class="header_submenu_item"><a href="#">Dịch vụ thương mại</a></li>
-                        <li class="header_submenu_item"><a href="#">Thi công PhotoBooth và Backdrop</a></li>
-                        <li class="header_submenu_item"><a href="#">Tổ chức sự kiện</a></li>
-                        <li class="header_submenu_item"><a href="#">Quay phim - Chụp hình sự kiện chuyên nghiệp tại IQ Media</a></li>
+                        <li class="header_submenu_item"><a href="{{ route('posts.category', 'cho-thue-man-hinh-led') }}">Cho thuê màn hình LED</a></li>
+                        <li class="header_submenu_item"><a href="{{ route('posts.category', 'dich-vu-thuong-mai') }}">Dịch vụ thương mại</a></li>
+                        <li class="header_submenu_item"><a href="{{ route('posts.category', 'thi-cong-backdrop') }}">Thi công PhotoBooth và Backdrop</a></li>
+                        <li class="header_submenu_item"><a href="{{ route('posts.category', 'to-chuc-su-kien') }}">Tổ chức sự kiện</a></li>
+                        <li class="header_submenu_item"><a href="{{ route('posts.category', 'quay-phim-chup-hinh') }}">Quay phim - Chụp hình sự kiện chuyên nghiệp tại IQ Media</a></li>
                     </ul>
                 </li>
                 <li class="header_menu_item submenu">

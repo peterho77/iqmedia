@@ -128,17 +128,4 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('admin.index')->with('success', 'Đã xóa bài viết!');
     }
-
-    public function categoryLighting()
-    {
-        $posts = Post::where('category', 'Cho thuê màn hinh ánh sáng')
-            ->where('status', 'published')
-            ->latest()
-            ->get();
-
-        return view('posts.category', [
-            'category' => 'Cho thuê màn hinh ánh sáng',
-            'posts' => $posts
-        ]);
-    }
 }

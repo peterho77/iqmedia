@@ -3,7 +3,7 @@
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Danh sách bài viết</h1>
-        <a href="{{ route('admin.create') }}" class="btn btn-success">Thêm bài viết mới</a>
+        {{-- <a href="{{ route('admin.create') }}" class="btn btn-success">Thêm bài viết mới</a> --}}
     </div>
 
     <div class="card">

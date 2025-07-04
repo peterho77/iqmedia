@@ -63,18 +63,33 @@ class PostController extends Controller
     {
         //
     }
-    /**
-     * Hiển thị bài viết thuộc danh mục "Cho thuê màn hinh ánh sáng"
-     */
-    public function categoryLighting()
+
+    public function showCategory($category)
     {
-        $posts = Post::where('category', 'Cho thuê màn hinh ánh sáng')
+        // Bản đồ slug -> tên danh mục
+        $categories = [
+            'cho-thue-man-hinh-anh-sang' => 'Cho thuê màn hinh ánh sáng',
+            'cho-thue-man-hinh-led' => 'Cho thuê màn hình LED',
+            'dich-vu-thuong-mai' => 'Dịch vụ thương mại',
+            'thi-cong-backdrop' => 'Thi công PhotoBooth và Backdrop',
+            'to-chuc-su-kien' => 'Tổ chức sự kiện',
+            'quay-phim-chup-hinh' => 'Quay phim - Chụp hình sự kiện chuyên nghiệp tại IQ Media',
+        ];
+
+        // Kiểm tra tồn tại
+        if (!array_key_exists($category, $categories)) {
+            abort(404);
+        }
+
+        $categoryName = $categories[$category];
+
+        $posts = Post::where('category', $categoryName)
             ->where('status', 'published')
             ->latest()
             ->get();
 
         return view('posts.category', [
-            'category' => 'Cho thuê màn hinh ánh sáng',
+            'category' => $categoryName,
             'posts' => $posts
         ]);
     }

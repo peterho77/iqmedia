@@ -35,7 +35,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect($user->role === 'admin' ? '/admin/dashboard' : '/user/dashboard');
+        return redirect($user->role === 'admin' ? '/admin/dashboard' : '/');
     }
     // Hiển thị form đăng nhập
     public function showLoginForm()
@@ -55,7 +55,7 @@ class AuthController extends Controller
             $user = Auth::user();
             if($user->role == 'admin')
             {
-                return redirect('/admin/dashboard');
+                return redirect('/admin');
             }
             return redirect()->route('home');
         }
@@ -69,6 +69,6 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
     }
 }
