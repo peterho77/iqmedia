@@ -41,6 +41,13 @@ ul,ol{
     list-style:none;
 }
 
+.custom-container{
+    --max-width: 1200px;
+    --container-padding: 1em;
+    width: min(100% - var(--container-padding) * 2, var(--max-width));
+    margin-inline: auto;
+}
+
 .header{
     height: var(--header-height);
 }
