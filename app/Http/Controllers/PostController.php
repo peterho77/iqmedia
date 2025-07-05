@@ -13,6 +13,8 @@ class PostController extends Controller
     public function index()
     {
         //
+        $posts = Post::get();
+        return view('pages.home', compact('posts'));
     }
 
     /**

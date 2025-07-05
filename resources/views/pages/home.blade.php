@@ -54,17 +54,18 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
+    
     {{-- // Thêm phần dịch vụ --}}
     <div class="custom-container">
         <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-6 col-6 post-inner clearfix">
+            @foreach ($posts as $post)
+                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 post-inner clearfix">
                 <div class="blog_index">
                     <div class="myblog"
                         onclick="window.location.href='/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet';">
                         <div class="image-blog-left a-center">
                             <a href="/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet">
-                                <img src="//iqmedia.com.vn/uploads/images/images/6856057a0bbcf.jpg"
+                                <img src="{{ \Illuminate\Support\Facades\Storage::url($post->image) }}"
                                     data-src="//iqmedia.com.vn/uploads/images/images/6856057a0bbcf.jpg"
                                     class="lazyload img-responsive loaded" style="aspect-ratio: 3/2;width: 100%;"
                                     data-was-processed="true">
@@ -73,83 +74,14 @@
                         <div class="content_blog">
                             <div class="content_right">
                                 <h3>
-                                    <a href="/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet">Amana Hotel chính thức
-                                        khai trương tại Phan Thiết</a>
+                                    <a href="/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet">{{ $post->title }}</a>
                                 </h3>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-6 post-inner clearfix">
-                <div class="blog_index">
-                    <div class="myblog"
-                        onclick="window.location.href='/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet';">
-                        <div class="image-blog-left a-center">
-                            <a href="/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet">
-                                <img src="//iqmedia.com.vn/uploads/images/images/6856057a0bbcf.jpg"
-                                    data-src="//iqmedia.com.vn/uploads/images/images/6856057a0bbcf.jpg"
-                                    class="lazyload img-responsive loaded" style="aspect-ratio: 3/2;width: 100%;"
-                                    data-was-processed="true">
-                            </a>
-                        </div>
-                        <div class="content_blog">
-                            <div class="content_right">
-                                <h3>
-                                    <a href="/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet">Amana Hotel chính thức
-                                        khai trương tại Phan Thiết</a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-             <div class="col-lg-3 col-md-3 col-sm-6 col-6 post-inner clearfix">
-                <div class="blog_index">
-                    <div class="myblog"
-                        onclick="window.location.href='/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet';">
-                        <div class="image-blog-left a-center">
-                            <a href="/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet">
-                                <img src="//iqmedia.com.vn/uploads/images/images/6856057a0bbcf.jpg"
-                                    data-src="//iqmedia.com.vn/uploads/images/images/6856057a0bbcf.jpg"
-                                    class="lazyload img-responsive loaded" style="aspect-ratio: 3/2;width: 100%;"
-                                    data-was-processed="true">
-                            </a>
-                        </div>
-                        <div class="content_blog">
-                            <div class="content_right">
-                                <h3>
-                                    <a href="/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet">Amana Hotel chính thức
-                                        khai trương tại Phan Thiết</a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-             <div class="col-lg-3 col-md-3 col-sm-6 col-6 post-inner clearfix">
-                <div class="blog_index">
-                    <div class="myblog"
-                        onclick="window.location.href='/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet';">
-                        <div class="image-blog-left a-center">
-                            <a href="/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet">
-                                <img src="//iqmedia.com.vn/uploads/images/images/6856057a0bbcf.jpg"
-                                    data-src="//iqmedia.com.vn/uploads/images/images/6856057a0bbcf.jpg"
-                                    class="lazyload img-responsive loaded" style="aspect-ratio: 3/2;width: 100%;"
-                                    data-was-processed="true">
-                            </a>
-                        </div>
-                        <div class="content_blog">
-                            <div class="content_right">
-                                <h3>
-                                    <a href="/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet">Amana Hotel chính thức
-                                        khai trương tại Phan Thiết</a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection
