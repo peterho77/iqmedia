@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController as UserPostController;
 use PHPUnit\Framework\Attributes\PostCondition;
 
 // View home page
+Route::redirect('/','/home')->name('home');
 Route::get('/home', [UserPostController::class, 'index'])->name('home');
 
 // View contact
