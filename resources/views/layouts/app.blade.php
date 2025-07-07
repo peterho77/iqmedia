@@ -10,8 +10,6 @@
         @vite([
             'resources/css/app.css',
             'resources/js/app.js',
-            'public/css/reset.css',
-            'public/css/style.css',
             'public/js/script.js'
         ])
 
@@ -20,7 +18,7 @@
         @stack('styles')
     </head>
 
-    <body>
+    <body>  
         @include('components.header')
 
         <main>
