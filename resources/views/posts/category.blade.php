@@ -34,22 +34,20 @@
                             {{-- Tiêu đề bài viết --}}
                             <h5 class="card-title fw-semibold mb-2" style="height: 50px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
                                 {{ $post->title }}
-                            </h5>
-                            
-                            {{-- Mô tả ngắn --}}
-                            <p class="card-text text-muted small mb-3" style="height: 70px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                {{ Str::limit(strip_tags($post->content), 100) }}
-                            </p>
+                            </h5>                       
                             
                             {{-- xem chi tiết --}}
-                            <div class="mt-auto text-end">
-                                <a href="{{ route('posts.show', $post->id) }}" class="btn btn-sm btn-primary">Xem chi tiết</a>
+                            <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
+                            {{-- Ngày đăng --}}
+                            <small class="text-muted">
+                                <i class="bi bi-calendar me-1"></i>
+                                {{ $post->created_at->format('d/m/Y') }}
+                            </small>
+                            {{-- Nút Xem chi tiết --}}
+                            <a href="{{ route('posts.show', $post->id) }}" class="btn btn-sm btn-primary">
+                                Xem chi tiết
+                            </a>
                             </div>
-                        </div>
-                        
-                        {{-- Footer hiển thị ngày đăng --}}
-                        <div class="card-footer bg-white border-top-0 text-muted small">
-                            <i class="bi bi-calendar me-1"></i> {{ $post->created_at->format('d/m/Y') }}
                         </div>
                     </div>
                 </div>
