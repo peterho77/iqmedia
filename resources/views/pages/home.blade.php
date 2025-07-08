@@ -3,22 +3,19 @@
 @section('title', 'Trang chủ - IQ Media')
 
 @section('content')
-    {{-- Container chính của carousel --}}
+    {{-- Carousel Banner --}}
     <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" style="margin-top: 0;">
-
-        {{-- Các chấm tròn điều hướng --}}
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active" aria-current="true"
-                aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0"
+                    class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
         </div>
 
-        {{-- Nội dung các slides --}}
         <div class="carousel-inner">
-            {{-- bannner 1 uu tien hien thị đầu tiên --}}
             <div class="carousel-item active">
                 <img src="{{ asset('img/banner1.jpg') }}" class="d-block w-100 banner-image" alt="Banner 1">
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption d-none d-md-block text-start">
                     <h2>CÔNG TY CỔ PHẦN TRUYỀN THÔNG & SỰ KIỆN IQ</h2>
                     <div class="banner-services">
                         <p>● CUNG CẤP MÀN HÌNH LED INDOOR</p>
@@ -26,11 +23,9 @@
                     </div>
                 </div>
             </div>
-
-            {{-- banner 2  --}}
             <div class="carousel-item">
                 <img src="{{ asset('img/banner2.jpg') }}" class="d-block w-100 banner-image" alt="Banner 2">
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption d-none d-md-block text-start">
                     <h2>CÔNG TY CỔ PHẦN TRUYỀN THÔNG & SỰ KIỆN IQ</h2>
                     <div class="banner-services">
                         <p>● TỔ CHỨC LỄ KHÁNH THÀNH</p>
@@ -42,46 +37,54 @@
             </div>
         </div>
 
-        {{-- Nút Previous ben trái --}}
-        <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel"
+                data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-
-        {{-- Nút Next ben phai --}}
-        <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel"
+                data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    
-    {{-- // Thêm phần dịch vụ --}}
-    <div class="custom-container">
-        <div class="row">
-            @foreach ($posts as $post)
-                 <div class="col-lg-3 col-md-3 col-sm-6 col-6 post-inner clearfix">
-                <div class="blog_index">
-                    <div class="myblog"
-                        onclick="window.location.href='/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet';">
-                        <div class="image-blog-left a-center">
-                            <a href="/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet">
-                                <img src="{{ \Illuminate\Support\Facades\Storage::url($post->image) }}"
-                                    data-src="//iqmedia.com.vn/uploads/images/images/6856057a0bbcf.jpg"
-                                    class="lazyload img-responsive loaded" style="aspect-ratio: 3/2;width: 100%;"
-                                    data-was-processed="true">
-                            </a>
-                        </div>
-                        <div class="content_blog">
-                            <div class="content_right">
-                                <h3>
-                                    <a href="/services/amana-hotel-chinh-thuc-khai-truong-tai-phan-thiet">{{ $post->title }}</a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
+
+    {{-- Section DỊCH VỤ --}}
+    <section class="my-5">
+      <div class="container custom-container">
+        <div class="border rounded p-4 bg-white shadow-sm">
+          {{-- Tiêu đề --}}
+          <h2 class="fw-bold mb-4 pb-2 border-bottom border-3 border-warning">DỊCH VỤ</h2>
+
+          {{-- Grid các card dịch vụ --}}
+          <div class="row g-4">
+            @foreach($posts as $post)
+              <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                  {{-- Ảnh --}}
+                  <a href="{{ route('posts.show', $post->id) }}">
+                    <img src="{{ Storage::url($post->image) }}"
+                         class="card-img-top"
+                         alt="{{ $post->title }}"
+                         style="aspect-ratio:3/2; object-fit:cover;">
+                  </a>
+
+                  {{-- Body --}}
+                  <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">
+                      <a href="{{ route('posts.show', $post->id) }}" class="text-dark">
+                        {{ $post->title }}
+                      </a>
+                    </h5>
+                    <p class="card-text text-truncate">
+                      {!! Str::limit(strip_tags($post->description), 80) !!}
+                    </p>                 
+                  </div>
                 </div>
-            </div>
+              </div>
             @endforeach
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
 @endsection
