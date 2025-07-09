@@ -70,12 +70,31 @@ class PostController extends Controller
     {
         // Bản đồ slug -> tên danh mục
         $categories = [
+            // Dịch vụ hiện tại
             'cho-thue-man-hinh-anh-sang' => 'Cho thuê màn hinh ánh sáng',
             'cho-thue-man-hinh-led' => 'Cho thuê màn hình LED',
             'dich-vu-thuong-mai' => 'Dịch vụ thương mại',
             'thi-cong-backdrop' => 'Thi công PhotoBooth và Backdrop',
             'to-chuc-su-kien' => 'Tổ chức sự kiện',
             'quay-phim-chup-hinh' => 'Quay phim - Chụp hình sự kiện chuyên nghiệp tại IQ Media',
+            
+            // Quảng cáo - thêm mới
+            'gia-cong-cnc-laser' => 'Gia Công CNC - LASER',
+            'thi-cong-quang-cao' => 'Thi Công Quảng Cáo',
+            'in-an-ky-thuat-so' => 'In Ấn Kỹ Thuật Số',
+            'thiet-ke-quang-cao' => 'Thiết Kế Quảng Cáo',
+            
+            // Thương mại - thêm mới các danh mục cần thiết
+            'loa-bf-audio' => 'Loa BF Audio',
+            'karaoke-gia-dinh' => 'Karaoke gia đình',
+            'bo-quan-ly-nguon' => 'Bộ quản lý nguồn',
+            'amply-lien-mixer' => 'Amply liền Mixer',
+            'loa-boutum' => 'Loa Boutum',
+            'loa-latop' => 'Loa Latop (USA)',
+            'micro-bf-audio' => 'Micro BF Audio',
+            'mixer-bf-digital-karaoke' => 'Mixer BF Digital Karaoke',
+            'power-ampli' => 'Power Ampli',
+            'tron-bo-karaoke' => 'Trọn bộ karaoke'
         ];
 
         // Kiểm tra tồn tại

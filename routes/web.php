@@ -45,12 +45,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
 // Hiển thị chi tiết bài viết cho người dùng
 Route::get('/posts/{id}', [UserPostController::class, 'show'])->name('posts.show');
-
-// Hiển thị bài viết theo danh mục cho người dùng
-// Route::get('/dich-vu/cho-thue-man-hinh-anh-sang', [UserPostController::class, 'categoryLighting'])
-//     ->name('posts.category.lighting');
 Route::get('/dich-vu/{category}', [UserPostController::class, 'showCategory'])
     ->name('posts.category');
+Route::get('/quang-cao/{category}', [UserPostController::class, 'showCategory'])
+    ->name('posts.quangcao');
+
 
 
 //admin mới

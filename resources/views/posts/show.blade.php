@@ -8,6 +8,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
             <li class="breadcrumb-item"><a href="/dich-vu">Dịch vụ</a></li>
+            <li class="breadcrumb-item"><a href="/quang-cao">Quảng cáo</a></li>
             @if($post->category)
                 <li class="breadcrumb-item active">{{ $post->category }}</li>
             @endif
