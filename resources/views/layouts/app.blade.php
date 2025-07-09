@@ -18,14 +18,18 @@
         @stack('styles')
     </head>
 
-    <body>  
-        @include('components.header')
+    <body>
+        @include('components.side-bar')
 
-        <main>
-            @yield('content')
+        <main class="main-content">
+            @include('components.header')
+
+            <main>
+                @yield('content')
+            </main>
+
+            @include('components.footer')
         </main>
-
-        @include('components.footer')
 
         @stack('scripts')
     </body>
