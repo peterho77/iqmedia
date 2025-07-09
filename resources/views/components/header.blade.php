@@ -35,6 +35,16 @@
                         </div>
                     </button>
 
+                    {{-- Mobile toggle nav  --}}
+                    <button class="mobile-toggle-nav | button" data-shape="circle" data-controls="primary-nav">
+                        <svg data-size="big" xmlns="http://www.w3.org/2000/svg" class="bi bi-list icon icon-menu"
+                            viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                        </svg>
+                        <span class="visually-hidden">Menu</span>
+                    </button>
+
                     {{-- User Dropdown --}}
                     @php
                         $user = Auth::user();
@@ -42,7 +52,10 @@
                     <div class="dropdown">
                         <a class="header_user | button" type="button" id="userDropdown" data-shape="circle"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person | icon" data-width="large"></i>
+                            <svg data-size="big" xmlns="http://www.w3.org/2000/svg" class="bi bi-person-fill | icon"
+                                data-size="big" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                            </svg>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown"
                             style="min-width: 250px;">
@@ -88,12 +101,18 @@
 
                     {{-- Cart --}}
                     <a href="#" class="button" data-shape="circle">
-                        <i class="bi bi-basket | icon" data-width="large"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-cart | icon" data-size="big"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                        </svg>
                     </a>
                 </div>
             </div>
         </div>
     </div>
+
+
 
     {{-- Primary nav --}}
     <nav class="primary-nav">
@@ -140,4 +159,6 @@
             </ul>
         </div>
     </nav>
+
+    {{-- Side nav --}}
 </header>
