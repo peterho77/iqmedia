@@ -71,5 +71,4 @@
             </form>
         </div> --}}
     </div>
-    <!-- /.sidebar -->
 </aside>
