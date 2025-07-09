@@ -159,6 +159,6 @@
             </ul>
         </div>
     </nav>
-
-    {{-- Side nav --}}
 </header>
+
+{{-- Side bar --}}
