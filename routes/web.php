@@ -61,3 +61,7 @@ Route::get('/admin/{id}/edit', [PostController::class, 'edit'])->name('admin.edi
 Route::put('/admin/{id}', [PostController::class, 'update'])->name('admin.update');
 Route::delete('/admin/{id}', [PostController::class, 'destroy'])->name('admin.destroy');
 Route::get('/admin/show/{id}', [PostController::class, 'show'])->name('admin.show');
+Route::get('/admin/dich-vu', [PostController::class, 'dichVu'])->name('admin.dichvu');
+Route::get('/admin/quang-cao', [PostController::class, 'quangCao'])->name('admin.quangcao');
+
+
