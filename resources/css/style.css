@@ -13,6 +13,8 @@
 
     --dark-color-600: hsl(225, 35%, 27%);
 
+    --hover-color: hsl(229, 20%, 17%);
+
     --ff-primary: "Be Vietnam Pro", sans-serif;
 
     --ff-body: var(--ff-primary);
@@ -51,6 +53,8 @@
     --size-700: 2rem;
     --size-800: 2.5rem;
     --size-900: 3rem;
+
+    --sidebar-width: 18.75rem;
 }
 
 * {
@@ -60,11 +64,12 @@
 }
 
 body {
+
     font-family: var(--ff-body);
     font-size: var(--fs-body);
 
-    display: grid;
-    grid-template-columns: auto 1fr;
+    /* display: grid;
+    grid-template-columns: auto 1fr; */
 
     min-height: 100vh;
     min-height: 100dvh;
@@ -177,22 +182,36 @@ a {
 /* Component class */
 /* sidebar */
 #sidebar {
-    width: 300px;
-    height: 100vh;
+    width: var(--sidebar-width);
+    height: 100%;
+    padding: var(--size-100) var(--size-200);
+    background-color: var(--neutral-color-100);
 
-    position: sticky;
+    position: fixed;
     top: 0;
-    align-self: start;
+    left: 0;
 
-    transition: 200ms ease;
+    transform: translateX(0);
+    visibility: visible;
+
+    z-index: 99999;
+    transition: 300ms ease;
     overflow: hidden;
     text-wrap: nowrap;
 }
 
-#sidebar.close{
-    /* chưa có icon các thanh phan ben trong */
-    width: 0px;
-    padding: 0;
+/* lớp phủ overlay */
+.overlay {
+    z-index: 9999;
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(rgb(0 0 0 / 0), rgb(0 0 0 / 0.8));
+}
+
+#sidebar.close {
+    transform: translateX(-100%);
+    visibility: hidden;
 }
 
 #sidebar svg {
@@ -208,7 +227,17 @@ a {
 
 #sidebar ul {
     margin: 0;
-    padding: var(--size-100) var(--size-400);
+    padding: 0;
+}
+
+#sidebar ul li {
+    padding: var(--size-100) var(--size-200);
+}
+
+#sidebar li:hover > a > span,
+#sidebar .dropdown-btn:hover span,
+#sidebar .dropdown-btn:hover svg{
+    color: var(--accent-color-400);
 }
 
 #sidebar > ul > li:first-child {
@@ -225,12 +254,16 @@ a {
     margin-left: auto;
 }
 
+#sidebar .toggle-sidebar-btn:hover svg{
+    fill: var(--accent-color-400);
+}
+
 #sidebar .dropdown-btn,
 #sidebar li a {
     display: flex;
     align-items: center;
     gap: 1em;
-    padding: var(--size-200);
+    padding: var(--size-100);
 }
 
 #sidebar .dropdown-btn {
@@ -256,6 +289,10 @@ a {
 
 .sub-menu.show {
     grid-template-rows: 1fr;
+}
+
+.sub-menu a{
+    text-wrap: wrap;
 }
 
 .rotate svg:last-child {
