@@ -77,13 +77,13 @@ class PostController extends Controller
             'thi-cong-backdrop' => 'Thi công PhotoBooth và Backdrop',
             'to-chuc-su-kien' => 'Tổ chức sự kiện',
             'quay-phim-chup-hinh' => 'Quay phim - Chụp hình sự kiện chuyên nghiệp tại IQ Media',
-            
+
             // Quảng cáo - thêm mới
             'gia-cong-cnc-laser' => 'Gia Công CNC - LASER',
             'thi-cong-quang-cao' => 'Thi Công Quảng Cáo',
             'in-an-ky-thuat-so' => 'In Ấn Kỹ Thuật Số',
             'thiet-ke-quang-cao' => 'Thiết Kế Quảng Cáo',
-            
+
             // Thương mại - thêm mới các danh mục cần thiết
             'loa-bf-audio' => 'Loa BF Audio',
             'karaoke-gia-dinh' => 'Karaoke gia đình',
@@ -109,9 +109,16 @@ class PostController extends Controller
             ->latest()
             ->get();
 
+        $relatedPosts = Post::where('category', $categoryName)
+            ->where('status', 'published')
+            ->latest()
+            ->take(5)
+            ->get();
+
         return view('posts.category', [
             'category' => $categoryName,
-            'posts' => $posts
+            'posts' => $posts,
+            'relatedPosts' => $relatedPosts
         ]);
     }
 }

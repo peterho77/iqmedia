@@ -128,4 +128,39 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('admin.index')->with('success', 'Đã xóa bài viết!');
     }
+
+    //Danh mục
+    public function dichVu()
+    {
+        $categories = [
+            'Cho thuê màn hinh ánh sáng',
+            'Cho thuê màn hình LED',
+            'Dịch vụ thương mại',
+            'Thi công PhotoBooth và Backdrop',
+            'Tổ chức sự kiện',
+            'Quay phim - Chụp hình sự kiện'
+        ];
+
+        $posts = Post::whereIn('category', $categories)->get();
+
+        return view('admin.posts.index', compact('posts'));
+    }
+
+    public function quangCao()
+    {
+        $categories = [
+            'Gia Công CNC - LASER',
+            'Thi Công Quảng Cáo',
+            'In Ấn Kỹ Thuật Số',
+            'Thiết Kế Quảng Cáo'
+        ];
+
+        $posts = Post::whereIn('category', $categories)->get();
+
+        return view('admin.posts.index', compact('posts'));
+    }
+
+    
+
+
 }
