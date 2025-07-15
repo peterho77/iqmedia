@@ -145,21 +145,21 @@
                     </ul>
                 </li>
                 <li class="has-submenu" data-controls="submenu">
-                    <a href="">
+                    <a href="{{ route('products.index') }}">
                         Thương mại
                         <i class="bi bi-chevron-down | icon" data-type="inverted" data-size="small"></i>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('posts.category', 'loa-bf-audio') }}">Loa BF Audio</a></li>
-                        <li><a href="{{ route('posts.category', 'karaoke-gia-dinh') }}">Karaoke gia đình</a></li>
-                        <li><a href="{{ route('posts.category', 'bo-quan-ly-nguon') }}">Bộ quản lý nguồn</a></li>
-                        <li><a href="{{ route('posts.category', 'amply-lien-mixer') }}">Amply liền Mixer</a></li>
-                        <li><a href="{{ route('posts.category', 'loa-boutum') }}">Loa Boutum</a></li>
-                        <li><a href="{{ route('posts.category', 'loa-latop') }}">Loa Latop (USA)</a></li>
-                        <li><a href="{{ route('posts.category', 'micro-bf-audio') }}">Micro BF Audio</a></li>
-                        <li><a href="{{ route('posts.category', 'mixer-bf-digital-karaoke') }}">Mixer BF Digital Karaoke</a></li>
-                        <li><a href="{{ route('posts.category', 'power-ampli') }}">Power Ampli</a></li>
-                        <li><a href="{{ route('posts.category', 'tron-bo-karaoke') }}">Trọn bộ karaoke</a></li>
+                        <li><a href="{{ route('products.category', 'loa-bf-audio') }}">Loa BF Audio</a></li>
+                        <li><a href="{{ route('products.category', 'karaoke-gia-dinh') }}">Karaoke gia đình</a></li>
+                        <li><a href="{{ route('products.category', 'bo-quan-ly-nguon') }}">Bộ quản lý nguồn</a></li>
+                        <li><a href="{{ route('products.category', 'amply-lien-mixer') }}">Amply liền Mixer</a></li>
+                        <li><a href="{{ route('products.category', 'loa-boutum') }}">Loa Boutum</a></li>
+                        <li><a href="{{ route('products.category', 'loa-laptop-usa') }}">Loa Laptop (USA)</a></li>
+                        <li><a href="{{ route('products.category', 'micro-bf-audio') }}">Micro BF Audio</a></li>
+                        <li><a href="{{ route('products.category', 'mixer-bf-digital-karaoke') }}">Mixer BF Digital Karaoke</a></li>
+                        <li><a href="{{ route('products.category', 'power-ampli') }}">Power Ampli</a></li>
+                        <li><a href="{{ route('products.category', 'tron-bo-karaoke') }}">Trọn bộ karaoke</a></li>
                     </ul>
                 </li>
                 <li><a href="/tin-tuc">Tin tức</a></li>
@@ -169,5 +169,3 @@
         </div>
     </nav>
 </header>
-
-{{-- Side bar --}}

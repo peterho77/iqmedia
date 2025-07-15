@@ -1,0 +1,7 @@
+- Thêm chức năng quản lý sản phẩm cho mục Thương mại.
+- Cho phép admin thêm, sửa, xóa, xem sản phẩm.
+- Thêm xác thực dữ liệu khi tạo/cập nhật sản phẩm.
+- Xử lý upload hình ảnh sản phẩm.
+- Phân quyền: chỉ admin mới thao tác được.
+- Hiển thị danh sách sản phẩm, chi tiết sản phẩm, lọc theo danh mục.
+- Sử dụng các model, controller, request, view và route mới cho phần sản phẩm.

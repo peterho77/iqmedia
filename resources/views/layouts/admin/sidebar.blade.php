@@ -26,8 +26,8 @@
         <nav class="mt-2 flex-grow-1">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                with font-awesome or any other icon font library -->
+                
+                <!-- Quản lý bài viết -->
                 <li class="nav-item menu-open">
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -64,6 +64,37 @@
                     </ul>
                 </li>
 
+                <!-- Quản lý sản phẩm THƯƠNG MẠI -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-shopping-cart"></i>
+                        <p>
+                            Quản lý sản phẩm
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.products.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tất cả sản phẩm</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.products.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm sản phẩm</p>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a href="{{ route('products.index') }}" class="nav-link" target="_blank">
+                                <i class="far fa-eye nav-icon"></i>
+                                <p>Xem trang sản phẩm</p>
+                            </a>
+                        </li> --}}
+                    </ul>
+                </li>
+
                 <!-- Nút đăng xuất -->
                 <li class="nav-item">
                     <form id="sidebar-logout-form" action="{{ route('logout') }}" method="POST">
@@ -78,13 +109,5 @@
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
-        {{-- <div class="sidebar-logout p-3" style="margin-top: auto;">
-            <form id="sidebar-logout-form" action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit" class="btn btn-danger btn-block rounded-pill shadow-sm" style="font-weight:600; font-size:1.1rem;">
-                <i class="fas fa-sign-out-alt mr-2"></i> Đăng xuất
-            </button>
-            </form>
-        </div> --}}
     </div>
 </aside>

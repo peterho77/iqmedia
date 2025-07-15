@@ -11,8 +11,10 @@
             <div class="col-md-9">
 
                 <div class="row g-4">
+                    {{-- File category.blade.php hiển thị posts --}}
                     @if ($posts->count() > 0)
                         @foreach ($posts as $post)
+                            {{-- Hiển thị bài viết --}}
                             <div class="col-md-6 col-lg-4">
                                 <div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden">
 
@@ -57,10 +59,8 @@
                             </div>
                         @endforeach
                     @else
-                        <div class="col-12">
-                            <div class="alert alert-info text-center">
-                                Hiện chưa có bài viết nào trong danh mục này.
-                            </div>
+                        <div class="alert alert-info text-center">
+                            Hiện chưa có bài viết nào trong danh mục này.
                         </div>
                     @endif
                 </div>
@@ -104,8 +104,6 @@
             </div>
         </div>
     </div>
-
-
 
     @push('styles')
         <style>
