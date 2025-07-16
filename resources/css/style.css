@@ -14,6 +14,7 @@
     --dark-color-600: hsl(225, 35%, 27%);
 
     --hover-color: hsl(229, 20%, 17%);
+    --line-color: hsl(233, 6%, 27%);
 
     --ff-primary: "Be Vietnam Pro", sans-serif;
 
@@ -64,6 +65,10 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     font-family: var(--ff-body);
     font-size: var(--fs-body);
@@ -105,6 +110,9 @@ a {
 .padding-block-700 {
     padding-block: var(--size-700);
 }
+.padding-block-600 {
+    padding-block: var(--size-600);
+}
 
 .fw-bold {
     font-weight: var(--fw-bold);
@@ -118,6 +126,12 @@ a {
 
 .text-left {
     text-align: left;
+}
+
+@media (max-width: 62em) {
+    .text-center-only-md {
+        text-align: center;
+    }
 }
 
 /* General styling */
@@ -181,13 +195,12 @@ a {
 }
 
 /* social icon */
-.social-list{
+.social-list {
     display: flex;
     gap: var(--size-400);
 }
 
-.social-list a:is(:hover, :focus) .social-icon
-{
+.social-list a:is(:hover, :focus) .social-icon {
     color: var(--accent-color-400);
 }
 
@@ -195,7 +208,6 @@ a {
     width: var(--size-700);
     aspect-ratio: 1/1;
 }
-
 
 /* button */
 .button {
@@ -214,6 +226,13 @@ a {
 }
 
 /* Component class */
+/* main content */
+.main-content {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
 /* sidebar */
 #sidebar {
     width: var(--sidebar-width);
@@ -644,7 +663,8 @@ header {
 }
 
 /* footer */
-.primary-footer {
+footer {
+    margin-top: auto;
     background-color: var(--neutral-color-900);
 }
 
@@ -661,45 +681,87 @@ header {
 }
 
 .primary-footer li:hover a,
-.primary-footer li:hover::marker{
+.primary-footer li:hover::marker {
     color: var(--accent-color-400);
 }
 
-.primary-footer-wrapper{
+.primary-footer-wrapper {
     display: grid;
     gap: clamp(var(--size-200), 25vw, var(--size-700));
     grid-template-areas: "general-infor nav logo-social";
+    border-bottom: 1px solid var(--line-color);
 }
 
-.primary-footer-nav{
-    grid-area: "nav";
-}
-.primary-footer-general-infor{
-    grid-area: "general-infor";
-}
-.primary-footer-logo-social{
-    grid-area: "logo-social";
-}
-/* footer logo */
-.footer-logo{
-    display: flex;
-    align-items: center;
-    gap: var(--size-300);
+.primary-footer-wrapper > * {
+    margin-inline: auto;
 }
 
+@media (max-width: 62em) {
+    .primary-footer-wrapper {
+        grid-template-areas: "general-infor general-infor" "nav logo-social";
+    }
+}
+
+@media (max-width: 48em) {
+    .primary-footer-wrapper {
+        grid-template-areas: "general-infor" "nav" "logo-social";
+    }
+}
+
+.primary-footer-nav {
+    grid-area: nav;
+    columns: 2;
+    gap: var(--size-200);
+    list-style: disc;
+    width: fit-content;
+}
+@media (max-width: 48em) {
+    .primary-footer-nav {
+        display: grid;
+        gap: var(--size-400);
+    }
+
+    .primary-footer-nav ul {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: 300ms ease-in-out;
+    }
+    .primary-footer-nav ul > div {
+        overflow: hidden;
+    }
+    .prrmary-footer-nav .footer-section-title{
+        cursor: pointer;
+    }
+     .primary-footer-nav ul.show{
+        grid-template-rows: 1fr;
+    }
+}
+.primary-footer-general-infor {
+    grid-area: general-infor;
+    width: fit-content;
+}
+.primary-footer-logo-social {
+    grid-area: logo-social;
+}
+
+/* footer general infor */
+.primary-footer-general-infor ul li {
+    line-height: 1.4;
+}
 
 /* footer nav */
-.footer-nav {
-    columns: 2;
-}
-
-.footer-nav ul{
+.primary-footer-nav ul div{
     list-style: disc;
-    padding-inline: var(--size-200);
+    padding-inline: var(--size-400);
 }
 
-main {
-    flex: 1;
+.primary-footer-nav > nav {
+    width: fit-content;
+}
+
+/* bottom footer */
+.bottom-footer {
+    color: var(--neutral-color-100);
 }
 
 /* Banner Styles */
