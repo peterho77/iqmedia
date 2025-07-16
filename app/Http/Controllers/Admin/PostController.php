@@ -56,7 +56,7 @@ class PostController extends Controller
     {
         if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $path = $file->store('uploads', 'public'); // lưu vào storage/app/public/uploads
+            $path = $file->store('uploads', 'public'); 
             return asset('storage/' . $path); // trả về đường dẫn ảnh
         }
         return response()->json(['error' => 'Không có ảnh'], 400);

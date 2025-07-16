@@ -77,8 +77,7 @@ class ProductController extends Controller
             $uploadPath = public_path('storage/products');
             if (!file_exists($uploadPath)) {
                 mkdir($uploadPath, 0755, true);
-            }        
-          
+            }                
             $image->move($uploadPath, $imageName);
             $data['image'] = 'products/' . $imageName;
         }

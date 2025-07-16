@@ -24,18 +24,18 @@ class ProductController extends Controller
         }
 
         // Tìm kiếm theo tên
-        if ($request->has('q') && $request->q) {
-            $query->where('name', 'like', '%' . $request->q . '%');
-        }
+        // if ($request->has('q') && $request->q) {
+        //     $query->where('name', 'like', '%' . $request->q . '%');
+        // }
 
-        // Lọc theo giá
-        if ($request->has('price_min') && $request->price_min) {
-            $query->where('price', '>=', $request->price_min);
-        }
+        // // Lọc theo giá
+        // if ($request->has('price_min') && $request->price_min) {
+        //     $query->where('price', '>=', $request->price_min);
+        // }
 
-        if ($request->has('price_max') && $request->price_max) {
-            $query->where('price', '<=', $request->price_max);
-        }
+        // if ($request->has('price_max') && $request->price_max) {
+        //     $query->where('price', '<=', $request->price_max);
+        // }
 
         // Sắp xếp
         $sortBy = $request->get('sort', 'created_at');
@@ -82,7 +82,6 @@ class ProductController extends Controller
             ->active()
             ->firstOrFail();
 
-        // Tăng lượt xem
         $product->increment('views');
 
         // Lấy sản phẩm liên quan (cùng category)
@@ -140,11 +139,10 @@ class ProductController extends Controller
         $category = Category::where('slug', $categorySlug)->firstOrFail();
         
         $products = Product::where('category_id', $category->id)
-                          ->where('status', 'active')
-                          ->with('category')
-                          ->latest()
-                          ->paginate(12);
-        
+            ->where('status', 'active')
+            ->with('category')
+            ->latest()
+            ->paginate(12);    
         return view('products.category', compact('products', 'category'));
     }
 
@@ -158,7 +156,6 @@ class ProductController extends Controller
             ->where('is_featured', true)
             ->limit(12)
             ->get();
-
         return response()->json($products);
     }
 }

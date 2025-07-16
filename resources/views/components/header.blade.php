@@ -5,9 +5,8 @@
             <div class="nav-wrapper">
                 {{-- Logo --}}
                 <a class="header_logo">
-                    <img src="{{ asset('img/logo.png') }}" class="logo" alt="IQ Media Logo" />
+                    <img src="{{ asset('img/picture_service/logo/logo.png') }}" class="logo" alt="IQ Media Logo" />
                 </a>
-
                 {{-- Search --}}
                 <div class="header_search">
                     <form class="header_search-bar">
@@ -21,10 +20,6 @@
                                     d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                             </svg>
                         </button>
-                        {{-- <div class="header_search-suggest">
-                            <i class="bi bi-search | icon | me-300" data-type="inverted"></i>
-                            <span>Vui lòng nhập từ khóa vào ô cần tìm</span>
-                        </div> --}}
                     </form>
                 </div>
 

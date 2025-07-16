@@ -55,31 +55,31 @@
                         <li>
                             <a aria-label="facebook" href="">
                                 <svg class="social-icon">
-                                    <use xlink:href="/img/social-icons.svg#facebook"></use>
+                                    <use xlink:href="/img/picture_service/svg-icons/social-icons.svg#facebook"></use>
                                 </svg>
                             </a>
                         </li>
                         <li>
                             <a aria-label="twitter" href="">
                                 <svg class="social-icon">
-                                    <use xlink:href="/img/social-icons.svg#twitter"></use>
+                                    <use xlink:href="/img/picture_service/svg-icons/social-icons.svg#twitter"></use>
                                 </svg>
                             </a>
                         </li>
                         <li>
                             <a href="">
                                 <svg class="social-icon">
-                                    <use xlink:href="/img/social-icons.svg#youtube"></use>
+                                    <use xlink:href="/img/picture_service/svg-icons/social-icons.svg#youtube"></use>
                                 </svg>
                             </a>
                         </li>
                         <li>
                             <a href="">
                                 <svg class="social-icon">
-                                    <use xlink:href="/img/social-icons.svg#instagram"></use>
+                                    <use xlink:href="/img/picture_service/svg-icons/social-icons.svg#instagram"></use>
                                 </svg>
                             </a>
-                        </li>
+                        </li>                   
                     </ul>
                 </div>
             </div>

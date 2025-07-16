@@ -1,39 +1,21 @@
 @extends('layouts.app')
 
 @section('title', 'Trang chủ - IQ Media')
-
 @section('content')
-    {{-- Carousel Banner --}}
-    <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" style="margin-top: 0;">
+    <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" style="margin-top: 0;">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0"
-                    class="active" aria-current="true" aria-label="Slide 1"></button>
+              class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
+              aria-label="Slide 2"></button>  
         </div>
 
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('img/banner1.jpg') }}" class="d-block w-100 banner-image" alt="Banner 1">
-                <div class="carousel-caption d-none d-md-block text-start">
-                    <h2>CÔNG TY CỔ PHẦN TRUYỀN THÔNG & SỰ KIỆN IQ</h2>
-                    <div class="banner-services">
-                        <p>● CUNG CẤP MÀN HÌNH LED INDOOR</p>
-                        <p>● CUNG CẤP MÀN HÌNH LED OUTDOOR</p>
-                    </div>
-                </div>
+                <img src="https://iqmedia.com.vn/assets/slider_1.webp?1715932071" class="d-block w-100 banner-image" alt="Banner 1">
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('img/banner2.jpg') }}" class="d-block w-100 banner-image" alt="Banner 2">
-                <div class="carousel-caption d-none d-md-block text-start">
-                    <h2>CÔNG TY CỔ PHẦN TRUYỀN THÔNG & SỰ KIỆN IQ</h2>
-                    <div class="banner-services">
-                        <p>● TỔ CHỨC LỄ KHÁNH THÀNH</p>
-                        <p>● TỔ CHỨC LỄ KHAI TRƯƠNG</p>
-                        <p>● TỔ CHỨC LỄ KỶ NIỆM</p>
-                        <p>● TỔ CHỨC LỄ KHỞI CÔNG</p>
-                    </div>
-                </div>
+                <img src="https://iqmedia.com.vn/assets/slider_2.webp?1715932071" class="d-block w-100 banner-image" alt="Banner 2">
             </div>
         </div>
 
