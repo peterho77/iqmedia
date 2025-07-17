@@ -67,6 +67,9 @@
 
 html {
     height: 100%;
+    /* fix lỗi FOUC */
+    visibility: visible;
+    opacity: 1;
 }
 
 body {
@@ -244,13 +247,19 @@ a {
     top: 0;
     left: 0;
 
-    transform: translateX(0);
-    visibility: visible;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: all 300ms ease-in;
 
     z-index: 99999;
-    transition: 300ms ease;
     overflow: hidden;
     text-wrap: nowrap;
+}
+
+@media (min-width: 62em) {
+    #sidebar {
+        display: none;
+    }
 }
 
 /* lớp phủ overlay */
@@ -262,9 +271,9 @@ a {
     background-image: linear-gradient(rgb(0 0 0 / 0), rgb(0 0 0 / 0.8));
 }
 
-#sidebar.close {
-    transform: translateX(-100%);
-    visibility: hidden;
+#sidebar.show {
+    transform: translateX(0);
+    visibility: visible;
 }
 
 #sidebar svg {
@@ -588,6 +597,7 @@ header {
 
 .has-submenu:hover .submenu {
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
     transform: translateX(0);
 }
@@ -595,6 +605,7 @@ header {
 .submenu {
     z-index: 10;
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
     transform: translateX(-10px);
     transform-origin: left;
@@ -729,10 +740,10 @@ footer {
     .primary-footer-nav ul > div {
         overflow: hidden;
     }
-    .prrmary-footer-nav .footer-section-title{
+    .prrmary-footer-nav .footer-section-title {
         cursor: pointer;
     }
-     .primary-footer-nav ul.show{
+    .primary-footer-nav ul.show {
         grid-template-rows: 1fr;
     }
 }
@@ -750,7 +761,7 @@ footer {
 }
 
 /* footer nav */
-.primary-footer-nav ul div{
+.primary-footer-nav ul div {
     list-style: disc;
     padding-inline: var(--size-400);
 }
