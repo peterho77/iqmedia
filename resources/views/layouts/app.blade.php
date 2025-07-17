@@ -10,12 +10,10 @@
         @vite([
             'resources/css/app.css',
             'resources/js/app.js',
-            'public/js/script.js'
         ])
 
-        <!-- Custom CSS -->
-
-        @stack('styles')
+        {{-- fix lỗi FOUC --}}
+        <style>html{visibility: hidden;opacity:0;}</style>
     </head>
 
     <body>

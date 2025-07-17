@@ -1,10 +1,15 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap";
 
 // css
-import '../css/reset.css'
-import '../css/style.css'
+import "../css/reset.css";
+import "../css/style.css";
 
 // js
-import './side-bar.js'
-import './footer.js'
+import "../../public/js/script.js"
+import "./side-bar.js";
+import "./footer.js";
+
+window.addEventListener("load", () => {
+    document.body.style.visibility = "visible";
+});
