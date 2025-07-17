@@ -9,7 +9,3 @@ import "../css/style.css";
 import "../../public/js/script.js"
 import "./side-bar.js";
 import "./footer.js";
-
-window.addEventListener("load", () => {
-    document.body.style.visibility = "visible";
-});
