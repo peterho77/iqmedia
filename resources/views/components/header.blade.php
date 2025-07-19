@@ -11,7 +11,7 @@
                 {{-- Search --}}
                 <div class="header_search">
                     <form class="header_search-bar">
-                        <input type="text" class="" style="" placeholder="Tìm kiếm..." required />
+                        <input type="text" id="search-bar" style="" placeholder="Tìm kiếm..."/>
                         <button type="submit" class="button">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                 class="bi bi-search | icon"
@@ -21,10 +21,6 @@
                                     d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                             </svg>
                         </button>
-                        {{-- <div class="header_search-suggest">
-                            <i class="bi bi-search | icon | me-300" data-type="inverted"></i>
-                            <span>Vui lòng nhập từ khóa vào ô cần tìm</span>
-                        </div> --}}
                     </form>
                 </div>
 
@@ -117,8 +113,6 @@
             </div>
         </div>
     </div>
-
-
 
     {{-- Primary nav --}}
     <nav class="primary-nav">
