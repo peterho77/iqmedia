@@ -14,6 +14,7 @@
 
         {{-- fix lỗi FOUC --}}
         <style>html{visibility: hidden;opacity:0;}</style>
+        <link rel="stylesheet" href="{{ asset('css/reponsive.css') }}">
     </head>
 
     <body>

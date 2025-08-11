@@ -15,8 +15,7 @@ class ProductController extends Controller
         $query = Product::with(['category', 'primaryImage'])
             ->active()
             ->ordered();
-
-        // Lọc theo category nếu có
+        // Lọc theo category 
         if ($request->has('category') && $request->category) {
             $query->whereHas('category', function($q) use ($request) {
                 $q->where('slug', $request->category);
@@ -38,22 +37,22 @@ class ProductController extends Controller
         // }
 
         // Sắp xếp
-        $sortBy = $request->get('sort', 'created_at');
-        $sortOrder = $request->get('order', 'desc');
+        // $sortBy = $request->get('sort', 'created_at');
+        // $sortOrder = $request->get('order', 'desc');
 
-        switch ($sortBy) {
-            case 'price':
-                $query->orderBy('price', $sortOrder);
-                break;
-            case 'name':
-                $query->orderBy('name', $sortOrder);
-                break;
-            case 'featured':
-                $query->orderBy('is_featured', 'desc')->orderBy('created_at', 'desc');
-                break;
-            default:
-                $query->orderBy('created_at', $sortOrder);
-        }
+        // switch ($sortBy) {
+        //     case 'price':
+        //         $query->orderBy('price', $sortOrder);
+        //         break;
+        //     case 'name':
+        //         $query->orderBy('name', $sortOrder);
+        //         break;
+        //     case 'featured':
+        //         $query->orderBy('is_featured', 'desc')->orderBy('created_at', 'desc');
+        //         break;
+        //     default:
+        //         $query->orderBy('created_at', $sortOrder);
+        // }
 
         // Phân trang
         $perPage = $request->get('per_page', 12);
@@ -113,13 +112,11 @@ class ProductController extends Controller
         if (!$query) {
             return response()->json([]);
         }
-
         $products = Product::with(['category', 'primaryImage'])
             ->active()
             ->where('name', 'like', '%' . $query . '%')
             ->limit(10)
-            ->get();
-
+            ->get();       
         return response()->json($products->map(function($product) {
             return [
                 'id' => $product->id,
@@ -133,7 +130,6 @@ class ProductController extends Controller
             ];
         }));
     }
-
     public function category($categorySlug)
     {
         $category = Category::where('slug', $categorySlug)->firstOrFail();

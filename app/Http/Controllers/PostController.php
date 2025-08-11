@@ -12,11 +12,37 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-        $posts = Post::get();
-        return view('pages.home', compact('posts'));
-    }
+        // Lấy bài viết dịch vụ
+        $dichVuCategories = [
+            'Cho thuê màn hinh ánh sáng',
+            'Cho thuê màn hình LED',
+            'Dịch vụ thương mại',
+            'Thi công PhotoBooth và Backdrop',
+            'Tổ chức sự kiện',
+            'Quay phim - Chụp hình sự kiện chuyên nghiệp tại IQ Media'
+        ];
 
+        $dichVuPosts = Post::whereIn('category', $dichVuCategories)
+            ->where('status', 'published')
+            ->latest()
+            ->take(8)
+            ->get();
+
+        $quangCaoCategories = [
+            'Gia Công CNC - LASER',
+            'Thi Công Quảng Cáo',
+            'In Ấn Kỹ Thuật Số',
+            'Thiết Kế Quảng Cáo'
+        ];
+
+        $quangCaoPosts = Post::whereIn('category', $quangCaoCategories)
+            ->where('status', 'published')
+            ->latest()
+            ->take(8)
+            ->get();
+
+        return view('pages.home', compact('dichVuPosts', 'quangCaoPosts'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -101,7 +127,6 @@ class PostController extends Controller
         if (!array_key_exists($category, $categories)) {
             abort(404);
         }
-
         $categoryName = $categories[$category];
 
         $posts = Post::where('category', $categoryName)
@@ -120,5 +145,41 @@ class PostController extends Controller
             'posts' => $posts,
             'relatedPosts' => $relatedPosts
         ]);
+    } 
+
+    public function dichVu()
+    {
+        // Lấy tất cả bài viết dịch vụ cho trang dịch vụ
+        $dichVuCategories = [
+            'Cho thuê màn hinh ánh sáng',
+            'Cho thuê màn hình LED',
+            'Dịch vụ thương mại',
+            'Thi công PhotoBooth và Backdrop',
+            'Tổ chức sự kiện',
+            'Quay phim - Chụp hình sự kiện chuyên nghiệp tại IQ Media'
+        ];
+
+        $posts = Post::whereIn('category', $dichVuCategories)
+            ->where('status', 'published')
+            ->latest()
+            ->get();
+        return view('pages.dich-vu', compact('posts'));
+    }
+
+    public function quangCao()
+    {
+        // Lấy tất cả bài viết quảng cáo cho trang quảng cáo
+        $quangCaoCategories = [
+            'Gia Công CNC - LASER',
+            'Thi Công Quảng Cáo',
+            'In Ấn Kỹ Thuật Số',
+            'Thiết Kế Quảng Cáo'
+        ];
+
+        $posts = Post::whereIn('category', $quangCaoCategories)
+            ->where('status', 'published')
+            ->latest()
+            ->get();
+        return view('pages.quang-cao', compact('posts'));
     }
 }

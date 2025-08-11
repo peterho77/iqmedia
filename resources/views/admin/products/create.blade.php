@@ -91,7 +91,6 @@
                             @enderror
                         </div>
 
-                        {{-- Thay đổi input file --}}
                         <div class="form-group">
                             <label for="image">Hình ảnh sản phẩm</label>
                             <input type="file" class="form-control @error('image') is-invalid @enderror" 

@@ -24,14 +24,12 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request) 
     {       
-        $data = $request->validated();
-    
+        $data = $request->validated();   
         $data['slug'] = Str::slug($data['name']);
         $data['sku'] = $data['sku'] ?? 'SKU-' . time();
         $data['stock_quantity'] = $data['stock_quantity'] ?? 0;
         $data['status'] = $data['status'] ?? 'active';
         $data['is_featured'] = $request->boolean('is_featured');
-
         // Upload ảnh 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -44,9 +42,7 @@ class ProductController extends Controller
             $image->move($uploadPath, $imageName);
             $data['image'] = 'products/' . $imageName;
         }
-
         Product::create($data);
-
         return redirect()->route('admin.products.index')
         ->with('success', 'Sản phẩm đã được tạo thành công!');
     }
@@ -81,13 +77,10 @@ class ProductController extends Controller
             $image->move($uploadPath, $imageName);
             $data['image'] = 'products/' . $imageName;
         }
-
-        $product->update($data);
-        
+        $product->update($data);       
         return redirect()->route('admin.products.index')
         ->with('success', 'Sản phẩm đã được cập nhật thành công!');
     }
-
     public function destroy(Product $product)
     {
         // Xóa ảnh nếu có

@@ -1,4 +1,3 @@
-{{-- filepath: resources/views/admin/products/index.blade.php --}}
 @extends('layouts.admin.app')
 
 @section('title', 'Quản lý sản phẩm')
@@ -24,7 +23,6 @@
                             </button>
                         </div>
                     @endif
-
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
                             <thead>
@@ -66,7 +64,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger" 
-                                                        onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</button>
+                                                onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -83,12 +81,17 @@
                             </tbody>
                         </table>
                     </div>
-
                     <!-- Pagination -->
-                    {{ $products->links() }}
+                    {{$products->links()}}
                 </div>
             </div>
         </div>
     </div>
 </div>
+<select class="form-select form-select-sm flex-grow-1" name="category_id">
+    <option value="">Chọn nhóm hàng</option>
+    @foreach($categories as $cat)
+        <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+    @endforeach
+</select>
 @endsection

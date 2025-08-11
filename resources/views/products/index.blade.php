@@ -5,7 +5,6 @@
 
 @section('content')
 <div class="container py-4">
-    {{-- Breadcrumb --}}
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
@@ -13,7 +12,7 @@
         </ol>
     </nav>
 
-    {{-- Categories buttons --}}
+    {{-- hien thi loc san pham --}}
     <div class="row mb-4">
         <div class="col-12">
             <div class="d-flex flex-wrap gap-2">

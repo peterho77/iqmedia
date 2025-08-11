@@ -4,8 +4,7 @@
 
 @section('content')
     <div class="container py-5">
-        <h1 class="mb-4">{{ $category->name }}</h1>
-        
+        <h1 class="mb-4">{{ $category->name }}</h1>     
         <div class="row">
             {{-- Cột trái: Sản phẩm --}}
             <div class="col-md-9">
@@ -26,8 +25,8 @@
                                                 <i class="bi bi-box text-muted" style="font-size: 3rem;"></i>
                                             </div>
                                         @endif
-                                        
-                                        {{-- Badge nếu là sản phẩm nổi bật --}}
+
+                                        {{-- sản phẩm nổi bật --}}
                                         @if($product->is_featured)
                                             <span class="badge bg-warning position-absolute top-0 start-0 m-2">
                                                 Nổi bật
