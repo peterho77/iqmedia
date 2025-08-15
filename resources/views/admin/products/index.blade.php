@@ -88,10 +88,10 @@
         </div>
     </div>
 </div>
-<select class="form-select form-select-sm flex-grow-1" name="category_id">
+{{-- <select class="form-select form-select-sm flex-grow-1" name="category_id">
     <option value="">Chọn nhóm hàng</option>
     @foreach($categories as $cat)
         <option value="{{ $cat->id }}">{{ $cat->name }}</option>
     @endforeach
-</select>
+</select> --}}
 @endsection
