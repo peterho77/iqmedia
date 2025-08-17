@@ -7,8 +7,6 @@ use App\Http\Controllers\PostController as UserPostController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\ProductController;
 
-// ===== ROUTES CÔNG KHAI =====
-
 // Trang chủ
 Route::get('/', [UserPostController::class, 'index'])->name('home');
 
@@ -65,13 +63,13 @@ Route::prefix('api')->group(function () {
     Route::get('/products/featured', [ProductController::class, 'featured'])->name('api.products.featured');
 });
 
-// ===== ADMIN ROUTES =====
+//route admin
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     
     // Dashboard admin
     Route::get('/', [PostController::class, 'index'])->name('index');
     
-    // ===== QUẢN LÝ BÀI VIẾT - Routes tương thích với views cũ =====
+    //quan ly bai viet
     Route::get('/create', [PostController::class, 'create'])->name('create');
     Route::post('/', [PostController::class, 'store'])->name('store');
     Route::get('/{id}/edit', [PostController::class, 'edit'])->name('edit');
@@ -82,7 +80,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/dich-vu', [PostController::class, 'dichVu'])->name('dichvu');
     Route::get('/quang-cao', [PostController::class, 'quangCao'])->name('quangcao');
     
-    // ===== QUẢN LÝ SẢN PHẨM =====
+    //quan ly san pham bang resource
     Route::resource('products', AdminProductController::class)->names([
         'index' => 'products.index',
         'create' => 'products.create',

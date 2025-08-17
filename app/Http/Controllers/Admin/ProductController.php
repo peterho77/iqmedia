@@ -133,9 +133,11 @@ class ProductController extends Controller
      */
     private function taoSkuDuyNhat()
     {
-        do {
+        do 
+        {
             $sku = 'SP-' . strtoupper(Str::random(8));
-        } while (Product::where('sku', $sku)->exists());
+        }
+        while (Product::where('sku', $sku)->exists());
         
         return $sku;
     }
@@ -173,4 +175,5 @@ class ProductController extends Controller
             }
         }
     }
+    
 }

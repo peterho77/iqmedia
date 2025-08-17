@@ -1,4 +1,3 @@
-{{-- filepath: resources/views/admin/products/create.blade.php --}}
 @extends('layouts.admin.app')
 
 @section('title', 'Thêm sản phẩm mới')
@@ -17,7 +16,7 @@
                     </div>
                 </div>
                 
-                <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.products.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="row">
@@ -55,7 +54,7 @@
                                 <div class="form-group">
                                     <label for="price">Giá <span class="text-danger">*</span></label>
                                     <input type="number" class="form-control @error('price') is-invalid @enderror" 
-                                           id="price" name="price" value="{{ old('price') }}" required>
+                                        id="price" name="price" value="{{ old('price') }}" required>
                                     @error('price')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -65,7 +64,7 @@
                                 <div class="form-group">
                                     <label for="stock_quantity">Số lượng</label>
                                     <input type="number" class="form-control @error('stock_quantity') is-invalid @enderror" 
-                                           id="stock_quantity" name="stock_quantity" value="{{ old('stock_quantity', 0) }}">
+                                        id="stock_quantity" name="stock_quantity" value="{{ old('stock_quantity', 0) }}">
                                     @error('stock_quantity')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -76,7 +75,7 @@
                         <div class="form-group">
                             <label for="short_description">Mô tả ngắn</label>
                             <textarea class="form-control @error('short_description') is-invalid @enderror" 
-                                      id="short_description" name="short_description" rows="3">{{ old('short_description') }}</textarea>
+                                    id="short_description" name="short_description" rows="3">{{ old('short_description') }}</textarea>
                             @error('short_description')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -94,7 +93,7 @@
                         <div class="form-group">
                             <label for="image">Hình ảnh sản phẩm</label>
                             <input type="file" class="form-control @error('image') is-invalid @enderror" 
-                                   id="image" name="image" accept="image/*">
+                                id="image" name="image" accept="image/*">
                             <small class="form-text text-muted">Chỉ chọn 1 ảnh (tối đa 2MB)</small>
                             @error('image')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -104,7 +103,7 @@
                         <div class="form-group">
                             <label for="status">Trạng thái</label>
                             <select class="form-control @error('status') is-invalid @enderror" 
-                                    id="status" name="status" required>
+                                id="status" name="status" required>
                                 <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Hoạt động</option>
                                 <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Tạm dừng</option>
                                 <option value="draft" {{ old('status') == 'draft' ? 'selected' : '' }}>Nháp</option>
