@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Product; // Thêm import Product
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -41,7 +42,13 @@ class PostController extends Controller
             ->take(8)
             ->get();
 
-        return view('pages.home', compact('dichVuPosts', 'quangCaoPosts'));
+        // THÊM MỚI: Lấy sản phẩm
+        $products = Product::where('status', 'active')
+            ->latest()
+            ->take(8)
+            ->get();
+
+        return view('pages.home', compact('dichVuPosts', 'quangCaoPosts', 'products'));
     }
     /**
      * Show the form for creating a new resource.
