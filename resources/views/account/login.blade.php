@@ -28,29 +28,11 @@
       <div class="col-md-10 col-lg-7 col-xl-6 offset-xl-0">
         <form method="POST" action="{{ route('login') }}">
           @csrf
-          <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-3">
-            <p class="lead fw-normal mb-0 me-3">Đăng nhập với</p>
-            <button type="button" class="btn btn-primary btn-floating mx-1" disabled>
-              <i class="fab fa-facebook-f"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn-floating mx-1" disabled>
-              <i class="fab fa-twitter"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn-floating mx-1" disabled>
-              <i class="fab fa-linkedin-in"></i>
-            </button>
-          </div>
-
-          <div class="divider d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-0 mb-0">Hoặc</p>
-          </div>
-
           <!-- Email input -->
           <div class="form-outline mb-4">
             <input type="email" id="email" name="email"
               class="form-control form-control-lg @error('email') is-invalid @enderror"
-              placeholder="Nhập email hợp lệ" value="{{ old('email') }}" required autofocus />
-            <label class="form-label" for="email">Địa chỉ Email</label>
+              placeholder="Nhập email " value="{{ old('email') }}" required autofocus />
             @error('email')
               <span class="invalid-feedback d-block" role="alert">
                   <strong>{{ $message }}</strong>
@@ -63,7 +45,6 @@
             <input type="password" id="password" name="password"
               class="form-control form-control-lg @error('password') is-invalid @enderror"
               placeholder="Nhập mật khẩu" required />
-            <label class="form-label" for="password">Mật khẩu</label>
             @error('password')
               <span class="invalid-feedback d-block" role="alert">
                   <strong>{{ $message }}</strong>
@@ -74,10 +55,6 @@
           <div class="d-flex justify-content-between align-items-center mb-4">
             <!-- Checkbox -->
             <div class="form-check mb-0">
-              <input class="form-check-input me-2" type="checkbox" id="remember" name="remember" />
-              <label class="form-check-label" for="remember">
-                Ghi nhớ tôi
-              </label>
             </div>
             <a href="#" class="text-body">Quên mật khẩu?</a>
           </div>

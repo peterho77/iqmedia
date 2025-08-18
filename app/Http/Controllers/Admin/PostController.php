@@ -56,7 +56,7 @@ class PostController extends Controller
     {
         if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $path = $file->store('uploads', 'public'); // lưu vào storage/app/public/uploads
+            $path = $file->store('uploads', 'public'); 
             return asset('storage/' . $path); // trả về đường dẫn ảnh
         }
         return response()->json(['error' => 'Không có ảnh'], 400);
@@ -127,5 +127,23 @@ class PostController extends Controller
 
         $post->delete();
         return redirect()->route('admin.index')->with('success', 'Đã xóa bài viết!');
+    }
+
+    /**
+     * Hiển thị danh sách bài viết dịch vụ
+     */
+    public function dichVu()
+    {
+        $posts = Post::where('category', 'dich-vu')->latest()->get();
+        return view('admin.posts.index', compact('posts'));
+    }
+
+    /**
+     * Hiển thị danh sách bài viết quảng cáo
+     */
+    public function quangCao()
+    {
+        $posts = Post::where('category', 'quang-cao')->latest()->get();
+        return view('admin.posts.index', compact('posts'));
     }
 }

@@ -4,61 +4,98 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\PostController as UserPostController;
-use PHPUnit\Framework\Attributes\PostCondition;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\ProductController;
 
-// View home page
-Route::redirect('/','/home')->name('home');
-Route::get('/home', [UserPostController::class, 'index'])->name('home');
+// Trang chủ
+Route::get('/', [UserPostController::class, 'index'])->name('home');
 
-// View contact
+// Các trang thông tin
 Route::get('/contact', function () {
     return view('pages.contact');
 })->name('pages.contact');
 
-// View about
 Route::get('/about', function () {
     return view('pages.about');
 })->name('pages.about');
 
-
-// Auth users routes
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
-
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-// Dashboard admin route
-// Route::get('/admin/dashboard', function () {
-//     return view('admin.dashboard');
-// });
-
-// Quản lý bài viết admin (chỉ cần middleware 'auth' nếu muốn bảo vệ)
-//Route::middleware(['auth'])->prefix('admin')->group(function () {
-//    Route::resource('posts', PostController::class);
-//});
-Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
-    Route::resource('posts', PostController::class);
+// ===== ROUTES AUTHENTICATION =====
+Route::middleware('guest')->group(function () {
+    // Đăng ký
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+    
+    // Đăng nhập
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
 });
 
-// Hiển thị chi tiết bài viết cho người dùng
+// Đăng xuất (cần auth)
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+// ===== ROUTES BÀI VIẾT (USER) =====
+
+// Chi tiết bài viết
 Route::get('/posts/{id}', [UserPostController::class, 'show'])->name('posts.show');
 
-// Hiển thị bài viết theo danh mục cho người dùng
-// Route::get('/dich-vu/cho-thue-man-hinh-anh-sang', [UserPostController::class, 'categoryLighting'])
-//     ->name('posts.category.lighting');
-Route::get('/dich-vu/{category}', [UserPostController::class, 'showCategory'])
-    ->name('posts.category');
+// Dịch vụ và quảng cáo
+Route::get('/dich-vu', [UserPostController::class, 'dichVu'])->name('dich-vu');
+Route::get('/quang-cao', [UserPostController::class, 'quangCao'])->name('quang-cao');
 
+// Danh mục bài viết
+Route::get('/dich-vu/{category}', [UserPostController::class, 'showCategory'])->name('posts.category');
+Route::get('/quang-cao/{category}', [UserPostController::class, 'showCategory'])->name('posts.quangcao');
 
-//admin mới
-Route::get('/admin', [PostController::class, 'index'])->name('admin.index');
-Route::get('/admin/create', [PostController::class, 'create'])->name('admin.create');
-Route::post('/admin', [PostController::class, 'store'])->name('admin.store');
-Route::post('/admin/upload-image', [PostController::class, 'uploadImage'])->name('admin.uploadImage');//Thêm hình vào phần nội dung
-Route::get('/admin/{id}/edit', [PostController::class, 'edit'])->name('admin.edit');
-Route::put('/admin/{id}', [PostController::class, 'update'])->name('admin.update');
-Route::delete('/admin/{id}', [PostController::class, 'destroy'])->name('admin.destroy');
-Route::get('/admin/show/{id}', [PostController::class, 'show'])->name('admin.show');
+// ===== ROUTES SẢN PHẨM (USER) =====
+
+// Tất cả sản phẩm
+Route::get('/collections/all', [ProductController::class, 'index'])->name('products.index');
+
+// Sản phẩm theo danh mục
+Route::get('/collections/{category}', [ProductController::class, 'category'])->name('products.category');
+
+// ===== API ROUTES =====
+Route::prefix('api')->group(function () {
+    // Tìm kiếm sản phẩm
+    Route::get('/products/search', [ProductController::class, 'search'])->name('api.products.search');
+    
+    // Sản phẩm nổi bật
+    Route::get('/products/featured', [ProductController::class, 'featured'])->name('api.products.featured');
+});
+
+//route admin
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    
+    // Dashboard admin
+    Route::get('/', [PostController::class, 'index'])->name('index');
+    
+    //quan ly bai viet
+    Route::get('/create', [PostController::class, 'create'])->name('create');
+    Route::post('/', [PostController::class, 'store'])->name('store');
+    Route::get('/{id}/edit', [PostController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [PostController::class, 'update'])->name('update');
+    Route::delete('/{id}', [PostController::class, 'destroy'])->name('destroy');
+    Route::get('/show/{id}', [PostController::class, 'show'])->name('show');
+    Route::post('/upload-image', [PostController::class, 'uploadImage'])->name('uploadImage');
+    Route::get('/dich-vu', [PostController::class, 'dichVu'])->name('dichvu');
+    Route::get('/quang-cao', [PostController::class, 'quangCao'])->name('quangcao');
+    
+    //quan ly san pham bang resource
+    Route::resource('products', AdminProductController::class)->names([
+        'index' => 'products.index',
+        'create' => 'products.create',
+        'store' => 'products.store',
+        'show' => 'products.show',
+        'edit' => 'products.edit',
+        'update' => 'products.update',
+        'destroy' => 'products.destroy',
+    ]);
+    
+    // Xóa ảnh sản phẩm
+    Route::delete('products/{product}/images/{image}', [AdminProductController::class, 'deleteImage'])
+        ->name('products.delete-image');
+});
+
+// ===== ROUTE FALLBACK CHO SẢN PHẨM =====
+// Đặt cuối cùng để tránh xung đột với các route khác
+Route::get('/{slug}', [ProductController::class, 'show'])->name('products.show');
