@@ -56,7 +56,7 @@
             
             <div class="mb-4">
                 <button class="btn btn-primary btn-lg me-2">
-                    <i class="bi bi-cart-plus me-2"></i>Liên hệ mua hàng
+                    <i class="bi bi-cart-plus me-2"></i>Thêm vào giỏ hàng
                 </button>
                 <button class="btn btn-outline-secondary">
                     <i class="bi bi-heart"></i>
